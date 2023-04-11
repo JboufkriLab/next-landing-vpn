@@ -40,6 +40,12 @@ module.exports = {
         400: "#AFB5C0",
         500: "#DDDDDD",
       },
+        violet: {
+        100: "#ede9fe",
+        400: "#a78bfa",
+        500: "#5b21b6",
+      },
+     
     },
     extend: {},
   },
