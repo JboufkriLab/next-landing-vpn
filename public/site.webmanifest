@@ -1,12 +1,12 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "LaslesVPN",
-  "short_name": "LaslesVPN",
+  "name": "lista",
+  "short_name": "lista",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FFFFFF",
   "theme_color": "#F53838",
-  "description": "LaslesVPN Best VPN For Privacy, Country and Cheapest.",
+  "description": "lista market, your compain stressless for your scholar .",
   "icons": [
     {
       "src": "/favicon/android-icon-36x36.png",
