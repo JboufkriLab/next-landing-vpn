@@ -7,7 +7,7 @@ import Stars from "../public/assets/Icon/stars.svg";
 import ArrowBack from "../public/assets/Icon/eva_arrow-back-fill.svg";
 import ArrowNext from "../public/assets/Icon/eva_arrow-next-fill.svg";
 
-const Testimoni = ({
+const vetrina = ({
   listTestimoni = [
     {
       name: "iezh Robert",
@@ -141,4 +141,4 @@ const Testimoni = ({
   );
 };
 
-export default Testimoni;
+export default vetrina;

@@ -160,16 +160,16 @@ const Header = () => {
             </LinkScroll>
             <LinkScroll
               activeClass="active"
-              to="testimoni"
+              to="vetrina"
               spy={true}
               smooth={true}
               duration={1000}
               onSetActive={() => {
-                setActiveLink("testimoni");
+                setActiveLink("vetrina");
               }}
               className={
                 "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-md border-t-2 transition-all " +
-                (activeLink === "testimoni"
+                (activeLink === "vetrina"
                   ? "  border-orange-500 text-orange-500"
                   : " border-transparent ")
               }
