@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Link as LinkScroll } from "react-scroll";
 import ButtonOutline from "../misc/ButtonOutline.";
 import LogoVPN from "../../public/assets/Logo.svg";
-import LogoLista from "../../public/assets/lista.png";
+import LogoLista from "../../public/assets/logoLista.svg";
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState(null);
@@ -18,13 +18,13 @@ const Header = () => {
     <>
       <header
         className={
-          "fixed top-0 w-full  z-30 bg-white-500 transition-all " +
+          "fixed top-0 w-full  z-30 bg-violet-500 transition-all " +
           (scrollActive ? " shadow-md pt-0" : " pt-4")
         }
       >
         <nav className="max-w-screen-xl px-6 sm:px-8 lg:px-16 mx-auto grid grid-flow-col py-3 sm:py-4">
           <div className="col-start-1 col-end-2 flex items-center">
-            <LogoVPN className="h-8 w-auto" />
+            <LogoLista className="h-8 w-auto" />
           </div>
           <ul className="hidden lg:flex col-start-4 col-end-8 text-black-500  items-center">
             <LinkScroll
@@ -114,7 +114,7 @@ const Header = () => {
 
       <nav className="fixed lg:hidden bottom-0 left-0 right-0 z-20 px-4 sm:px-8 shadow-t ">
         <div className="bg-violet-500 sm:px-3">
-          <ul className="flex w-full justify-between items-center text-black-500">
+          <ul className="flex w-full justify-between items-center text-white-500">
             <LinkScroll
               activeClass="active"
               to="mylista"
@@ -125,26 +125,13 @@ const Header = () => {
                 setActiveLink("mylista");
               }}
               className={
-                "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all " +
+                "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-md border-t-2 transition-all " +
                 (activeLink === "mylista"
                   ? "  border-white-500 text-white-500"
                   : " border-transparent")
               }
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
+           
               mylista
             </LinkScroll>
             <LinkScroll
@@ -163,7 +150,7 @@ const Header = () => {
                   : " border-transparent ")
               }
             >
-               <button type="button" class="bg-white text-slate-900 dark:bg-slate-100 dark:text-slate-700 flex-none -my-2 mx-auto w-20 h-20 rounded-full ring-1 ring-slate-900/5 shadow-md flex items-center justify-center" aria-label="Pause">
+               <button type="button" class="bg-white text-slate-900 dark:bg-slate-100 dark:text-slate-700 flex-none -my-2 mx-auto w-20 h-20 rounded-full ring-4 ring-slate-900/5 shadow-md flex items-center justify-center" aria-label="Plus">
     <svg width="30" height="32" fill="currentColor">
       <rect x="6" y="4" width="4" height="24" rx="2" />
       <rect x="20" y="4" width="4" height="24" rx="2" />
@@ -173,34 +160,21 @@ const Header = () => {
             </LinkScroll>
             <LinkScroll
               activeClass="active"
-              to="vetrina"
+              to="testimoni"
               spy={true}
               smooth={true}
               duration={1000}
               onSetActive={() => {
-                setActiveLink("vetrina");
+                setActiveLink("testimoni");
               }}
               className={
-                "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all " +
+                "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-md border-t-2 transition-all " +
                 (activeLink === "testimoni"
                   ? "  border-orange-500 text-orange-500"
                   : " border-transparent ")
               }
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                />
-              </svg>
+
               vetrina
             </LinkScroll>
           </ul>
