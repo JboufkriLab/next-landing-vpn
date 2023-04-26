@@ -38,19 +38,6 @@ const Feature = () => {
           <h3 className="text-3xl lg:text-4xl font-medium leading-relaxed text-black-600">
            What do you need? we are here for you
           </h3>
-          <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/643fc3ea4247f20fefec90ce/1guchajih';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
 
           <ul className="text-black-500 self-start list-inside ml-8">
             {features.map((feature, index) => (
