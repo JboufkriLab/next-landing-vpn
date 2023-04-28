@@ -1,0 +1,10 @@
+{
+    "register": "تسجيل",
+    "success": "تم التسجيل بنجاح",
+    "name": "الاسم",
+    "phone": " رقم الهاتف",
+    "submit": "إرسال",
+    "signup": "تسجيل",
+    "verificationCode": "تسجيل", 
+    "registration_successful": "تم التسجيل بنجاح!" 
+  }

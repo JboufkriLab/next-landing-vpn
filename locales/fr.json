@@ -1,0 +1,10 @@
+{
+    "register": "Enregister",
+    "success": "Registration Successful",
+    "name": "Votre nom",
+    "phone": "téléphone",
+    "submit": "Soumettre",
+    "signup": "Enregister",
+    "verificationCode": "Code de vérification", 
+    "registration_successful": "Enregistré avec succes !"
+  }

@@ -6,29 +6,48 @@ import Layout from "../components/Layout/Layout";
 import SeoHead from "../components/SeoHead";
 import { BsFillShieldLockFill, BsTelephoneFill } from "react-icons/bs";
 import { CgSpinner } from "react-icons/cg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { auth } from "../firebase.config";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { toast, Toaster }from "react-hot-toast";
+import Register from "../components/Register";
+
+
+
 
 export default function Home() {
 
   const [user, setUser] = useState(null);
+  const [lang, setLang] = useState(null);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+  
+  function handleLangChange(lang) {
+    setLang(lang);
+  }
   return (
     <>
       <SeoHead title='Lista market Landing Page' />
-      <Layout>
+     
       {user ? (
-         <div className="w-80 flex flex-col gap-4 rounded-lg p-4">
-         <LanguageSelector />
-         </div>
-       
-        
+        <>
+        <Layout>
+        <Hero /><Feature /><Pricing /> </Layout>
+        </>
         ) : (
+          <>
+          {isClient && lang ? (
+            <Register lang={lang} />
+          ) : (
+            <LanguageSelector onLangChange={handleLangChange}/>
+          )}
+  </>
          
-          <><Hero /><Feature /><Pricing /></>
         )}
 
 
@@ -40,7 +59,7 @@ export default function Home() {
      
         
         
-      </Layout>
+     
     </>
   );
 }
