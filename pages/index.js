@@ -7,6 +7,7 @@ import SeoHead from "../components/SeoHead";
 import { useEffect, useState } from "react";
 import "react-phone-input-2/lib/style.css";
 import Register from "../components/Register";
+import Cookies from 'js-cookie';
 
 
 
@@ -15,6 +16,8 @@ export default function Home() {
 
   const [user, setUser] = useState(null);
   const [lang, setLang] = useState(null);
+  const isLoggedIn = Cookies.get('loggedIn');
+
 
 
 
@@ -26,7 +29,7 @@ export default function Home() {
     <>
       <SeoHead title='Lista market Landing Page' />
      
-      {user ? (
+      {isLoggedIn ? (
         <>
         <Layout>
         <Hero /><Feature /><Pricing /> </Layout>

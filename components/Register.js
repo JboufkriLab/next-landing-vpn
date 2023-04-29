@@ -1,4 +1,5 @@
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { useRouter } from 'next/router';
 import { auth } from "../firebase.config";
 import { BsFillShieldLockFill, BsTelephoneFill } from "react-icons/bs";
 import { CgSpinner } from "react-icons/cg";
@@ -7,7 +8,7 @@ import { useState, useEffect} from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import LogoLista from "../public/assets/logoLista.svg";
-
+import Cookies from 'js-cookie';
 
 import { toast, Toaster } from "react-hot-toast";
 import dynamic from 'next/dynamic';
@@ -18,7 +19,7 @@ const OtpInput = dynamic(
 );
 
 export default function Register({ lang }) {
-    const [otp, setOtp] = useState("");
+    const [otp, setOtp] = useState('');
 
     const [loading, setLoading] = useState(false);
     const [showOTP, setShowOTP] = useState(false);
@@ -28,12 +29,16 @@ export default function Register({ lang }) {
     const [phone, setPhone] = useState('');
     const [errorMessage, setErrorMessage] = useState("");
     const [invalidCode, setInvalidCode] = useState(false);
+    const router = useRouter();
+
     const onInputChange = (otp) => {
         setOtp(otp);
       
         // Check if the OTP code has 6 digits
         if (otp.length === 6) {
+           
           onOTPVerify(otp);
+          alert(otp);
         }
       };
 
@@ -86,16 +91,19 @@ export default function Register({ lang }) {
           });
       }
     
-      function onOTPVerify() {
+      function onOTPVerify(optIn) {
         setLoading(true);
         
         window.confirmationResult
-          .confirm(otp)
+          .confirm(optIn)
           .then(async (res) => {
             console.log(res);
             setUser(res.user);
             
             setLoading(false);
+            Cookies.set('loggedIn', true, { expires: 1 });
+            router.push('/', undefined, { shallow: true });
+
               })
       
           .catch((err) => {
@@ -141,8 +149,7 @@ export default function Register({ lang }) {
                             disabled={false}
                             shouldAutoFocus
                             className="opt-container"
-                         
-                         
+
                                  />
                     
                       {loading && (
