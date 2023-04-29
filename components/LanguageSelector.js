@@ -51,16 +51,22 @@ export default function LanguageSelector({ onLangChange }) {
       <div className="items-center">
             <LogoLista className="w-70 h-40" />
           </div>
-          <label htmlFor="lang-select" className="font-medium text-white-500">Welcome</label>
-
-      <label htmlFor="lang-select">Language:</label>
-      <select id="lang-select" value={selectedLang} onChange={handleChange}>
+          <div className="flex flex-col "> 
+          <div className='mb-4'>   
+            
+          <label className="font-medium text-white-500">Welcome</label>
+          </div>
+       
+          
+   
+      <select id="lang-select" value={selectedLang} onChange={handleChange} className="w-full mb-2bg-white rounded-2xl">
+      <option value="" defaultChecked>Choose your language</option>
         <option value="en">English</option>
         <option value="fr">Français</option>
         <option value="ar">العربية</option>
-      </select>
-      <dev><label htmlFor="lang-select" className="font-small text-violet-100 flex flex-col justify-center">
-      Lista market 2023© School Supplies Marketplace </label></dev>
+      </select> </div>
+      <dev className="fixed bottom-0 left-0 right-0 mx-auto w-1/2"><label className="font-small text-violet-100 flex flex-col justify-center">
+      Lista market 2023© <br/>School Supplies Marketplace </label></dev>
     </div>
   );
 }

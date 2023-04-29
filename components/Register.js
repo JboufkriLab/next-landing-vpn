@@ -8,6 +8,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import LogoLista from "../public/assets/logoLista.svg";
 
+
 import { toast, Toaster } from "react-hot-toast";
 import dynamic from 'next/dynamic';
 
@@ -25,6 +26,16 @@ export default function Register({ lang }) {
     const [isClient, setIsClient] = useState(false);
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
+    const [errorMessage, setErrorMessage] = useState("");
+    const [invalidCode, setInvalidCode] = useState(false);
+    const onInputChange = (otp) => {
+        setOtp(otp);
+      
+        // Check if the OTP code has 6 digits
+        if (otp.length === 6) {
+          onOTPVerify(otp);
+        }
+      };
 
     const { t, i18n } = useTranslation();
 
@@ -69,6 +80,7 @@ export default function Register({ lang }) {
      
           })
           .catch((error) => {
+            setErrorMessage("error"+ error.message);
             console.log(error);
             setLoading(false);
           });
@@ -82,12 +94,15 @@ export default function Register({ lang }) {
           .then(async (res) => {
             console.log(res);
             setUser(res.user);
+            
             setLoading(false);
               })
       
           .catch((err) => {
+            setErrorMessage("error"+ err.message);
             console.log(err);
             setLoading(false);
+            
           });
       }
     
@@ -98,7 +113,7 @@ export default function Register({ lang }) {
             <div id="recaptcha-container"></div>
             {user ? (
               <h2 className="text-center text-white font-medium text-2xl">
-                👍Login Success    {user.value}
+                👍Login Success  
               </h2>
             ) : (
                 <div   className="bg-gradient-to-b from-violet-100 to-violet-500 flex flex-col justify-center items-center h-screen"
@@ -108,52 +123,58 @@ export default function Register({ lang }) {
                       </div>
                 {isClient && showOTP ? (
                   <>
-                    <div className="bg-white text-emerald-500 w-fit mx-auto p-4 rounded-full">
-                      <BsFillShieldLockFill size={30} />
-                    </div>
-                    <label
-                      htmlFor="otp"
-                      className="font-bold text-xl text-white text-center"
+                   
+                    <div
+                      className="text-white-500 text-center"
                     >
                     <span>{t('verificationCode')} </span>
-                    </label>
-                <OtpInput
-                  value={otp}
-                  onChange={setOtp}
-                  OTPLength={6}
-                  otpType="number"
-                  disabled={false}
-                  autoFocus
-                  className="opt-container "
-                ></OtpInput>
-                    <button
-                      onClick={onOTPVerify}
-                      className="bg-emerald-600 w-full flex gap-1 items-center justify-center py-2.5 text-white rounded"
-                    >
+                    </div>
+            
+                         <OtpInput
+                            value={otp}
+                            onChange={onInputChange}
+                            isInputNum={true}
+                            inputStyle="otp-input"
+                            hasErrored={invalidCode}
+                            OTPLength={6}
+                            otpType="number"
+                            disabled={false}
+                            shouldAutoFocus
+                            className="opt-container"
+                         
+                         
+                                 />
+                    
                       {loading && (
                         <CgSpinner size={20} className="mt-1 animate-spin" />
                       )}
-                      <span>{t('verificationCode')} </span>
-                    </button>
+                   
+                    {errorMessage && <p className="text-white-500">{errorMessage}</p>}
                   </>
                 ) : (
                   <>
                
                    <label htmlFor="lang-select" className="font-medium text-white-500">{t('signup')}</label>
-                  <div>
+                   <div className="flex flex-col ">   
            
-                <input type="text" className="rounded-lg" placeholder={t('name')} value={name} onChange={(e) => setName(e.target.value)} />
+                <input type="text" className="w-full mb-2bg-white rounded-2xl" placeholder={t('name')} value={name} onChange={(e) => setName(e.target.value)} />
         
-                    <PhoneInput onlyCountries={['ma','fr']} country={"ma"} value={phone} placeholder='phone' onChange={setPhone} />
-                    <button
+                    <PhoneInput onlyCountries={['ma','fr']} 
+                    country={"ma"} 
+                    value={phone} 
+                    placeholder='phone' 
+                    onChange={setPhone} 
+                    className="w-full mb-2 rounded-3xl" />
+                   <button
                       onClick={onSignup}
-                      className="bg-violet-100 text-white-500 text-sm leading-6 font-medium py-2 px-3 rounded-lg"
+                      className="w-full mb-2 bg-violet-100 text-white-500 text-sm leading-6 font-medium rounded-3xl"
                     >
                       {loading && (
                         <CgSpinner size={20} className="mt-1 animate-spin" />
                       )}
                      {t('submit')}
                     </button>
+                  
                       </div>
                   </>
                 )}
