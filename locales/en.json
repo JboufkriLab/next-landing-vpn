@@ -1,10 +1,10 @@
 {
     "register": "Register",
     "success": "Registration Successful",
-    "name": "Name",
-    "phone": "Email",
+    "name": "Your name",
+    "phone": "Your phone number",
     "submit": "Submit",
-    "signup": "إرسال",
+    "signup": "Sign up",
     "verificationCode": "Verification code", 
     "registration_successful": "Your registration was successful!"
   }

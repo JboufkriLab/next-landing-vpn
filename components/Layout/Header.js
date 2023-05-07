@@ -3,19 +3,27 @@ import Link from "next/link";
 // Import react scroll
 import { Link as LinkScroll } from "react-scroll";
 import ButtonOutline from "../misc/ButtonOutline.";
+import IntercomButton from "../IntercomChat"
 import LogoVPN from "../../public/assets/Logo.svg";
 import LogoLista from "../../public/assets/logoLista.svg";
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState(null);
   const [scrollActive, setScrollActive] = useState(false);
+  const [isIntercomLoaded, setIsIntercomLoaded] = useState(false);
   useEffect(() => {
     window.addEventListener("scroll", () => {
       setScrollActive(window.scrollY > 20);
     });
   }, []);
+
+  
+
+
   return (
     <>
+  
+
       <header
         className={
           "fixed top-0 w-full  z-30 bg-violet-500 transition-all " +
@@ -115,12 +123,14 @@ const Header = () => {
       <nav className="fixed lg:hidden bottom-0 left-0 right-0 z-20 px-4 sm:px-8 shadow-t ">
         <div className="bg-violet-500 sm:px-3">
           <ul className="flex w-full justify-between items-center text-white-500">
-            <LinkScroll
+       
+          <LinkScroll
               activeClass="active"
               to="mylista"
               spy={true}
               smooth={true}
               duration={1000}
+              onClick={() => window.Intercom('show')} 
               onSetActive={() => {
                 setActiveLink("mylista");
               }}
@@ -150,7 +160,7 @@ const Header = () => {
                   : " border-transparent ")
               }
             >
-               <button type="button" class="bg-white text-slate-900 dark:bg-slate-100 dark:text-slate-700 flex-none -my-2 mx-auto w-20 h-20 rounded-full ring-4 ring-slate-900/5 shadow-md flex items-center justify-center" aria-label="Plus">
+               <button type="button" className="bg-white text-slate-900 dark:bg-slate-100 dark:text-slate-700 flex-none -my-2 mx-auto w-20 h-20 rounded-full ring-4 ring-slate-900/5 shadow-md flex items-center justify-center" aria-label="Plus">
     <svg width="30" height="32" fill="currentColor">
       <rect x="6" y="4" width="4" height="24" rx="2" />
       <rect x="20" y="4" width="4" height="24" rx="2" />

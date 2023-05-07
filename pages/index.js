@@ -9,15 +9,18 @@ import "react-phone-input-2/lib/style.css";
 import Register from "../components/Register";
 import Cookies from 'js-cookie';
 
+import IntercomChat from '../components/IntercomChat'
+import Header from "../components/Layout/Header";
+
+
 
 
 
 export default function Home() {
 
-  const [user, setUser] = useState(null);
+ // const [user, setUser] = useState(null);
   const [lang, setLang] = useState(null);
   const isLoggedIn = Cookies.get('loggedIn');
-
 
 
 
@@ -29,7 +32,7 @@ export default function Home() {
     <>
       <SeoHead title='Lista market Landing Page' />
      
-      {isLoggedIn ? (
+      {true ? (
         <>
         <Layout>
         <Hero /><Feature /><Pricing /> </Layout>

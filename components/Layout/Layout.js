@@ -5,9 +5,12 @@ import Header from "./Header";
 const Layout = ({ children }) => {
   return (
     <>
+    
+
       <Header />
       {children}
       <Footer />
+      <button onClick={() => window.Intercom('show')}></button>
     </>
   );
 };

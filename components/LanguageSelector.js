@@ -65,7 +65,7 @@ export default function LanguageSelector({ onLangChange }) {
         <option value="fr">Français</option>
         <option value="ar">العربية</option>
       </select> </div>
-      <dev className="fixed bottom-0 left-0 right-0 mx-auto w-1/2"><label className="font-small text-violet-100 flex flex-col justify-center">
+      <dev className="fixed bottom-0 left-0 right-0 mx-auto w-1/2"><label className="font-small text-gray-400 flex flex-col justify-center">
       Lista market 2023© <br/>School Supplies Marketplace </label></dev>
     </div>
   );

@@ -36,7 +36,7 @@ export default function Register({ lang }) {
       
         // Check if the OTP code has 6 digits
         if (otp.length === 6) {
-           
+            setOtp(otp);
           onOTPVerify(otp);
           alert(otp);
         }
@@ -72,8 +72,9 @@ export default function Register({ lang }) {
         onCaptchVerify();
 
         const appVerifier = window.recaptchaVerifier;
-
-        const formatPh = "+" + phone;
+   //TODO phone patern 
+        const formatPh = "+33634692789";
+       // const formatPh = "+33634692789" + phone;
     
         signInWithPhoneNumber(auth, formatPh, appVerifier)
           .then((confirmationResult) => {
@@ -95,7 +96,7 @@ export default function Register({ lang }) {
         setLoading(true);
         
         window.confirmationResult
-          .confirm(optIn)
+          .confirm(otp)
           .then(async (res) => {
             console.log(res);
             setUser(res.user);
@@ -126,15 +127,14 @@ export default function Register({ lang }) {
             ) : (
                 <div   className="bg-gradient-to-b from-violet-100 to-violet-500 flex flex-col justify-center items-center h-screen"
                 id="languageSelector">
-                  <div className="items-center">
+                <div className="items-center">
                         <LogoLista className="w-70 h-40" />
-                      </div>
+                </div>
                 {isClient && showOTP ? (
+                    /** Show OPT cverification */
                   <>
                    
-                    <div
-                      className="text-white-500 text-center"
-                    >
+                    <div className="text-white-500 text-center">
                     <span>{t('verificationCode')} </span>
                     </div>
             
@@ -148,7 +148,7 @@ export default function Register({ lang }) {
                             otpType="number"
                             disabled={false}
                             shouldAutoFocus
-                            className="opt-container"
+                            className="mt-4 opt-container"
 
                                  />
                     
@@ -159,14 +159,16 @@ export default function Register({ lang }) {
                     {errorMessage && <p className="text-white-500">{errorMessage}</p>}
                   </>
                 ) : (
+                /** Phone input namre  */    
                   <>
                
-                   <label htmlFor="lang-select" className="font-medium text-white-500">{t('signup')}</label>
-                   <div className="flex flex-col ">   
+                <label htmlFor="lang-select" className="font-medium text-white-500">{t('signup')}</label>
+                
+                <div className="flex flex-col ">   
            
-                <input type="text" className="w-full mb-2bg-white rounded-2xl" placeholder={t('name')} value={name} onChange={(e) => setName(e.target.value)} />
+                <input type="text" className="w-full mb-2bg-white rounded-2xl mt-4" placeholder={t('name')} value={name} onChange={(e) => setName(e.target.value)} />
         
-                    <PhoneInput onlyCountries={['ma','fr']} 
+                <PhoneInput onlyCountries={['ma','fr']} 
                     country={"ma"} 
                     value={phone} 
                     placeholder='phone' 
